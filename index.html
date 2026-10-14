@@ -1,0 +1,553 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Florian Chudigiewitsch</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <script type="text/javascript">
+            function copyToClipboard(id) {
+                var copyText = document.getElementById(id);
+                navigator.clipboard.writeText(copyText.firstChild.data);
+
+                // Hack to unfocus button
+                setTimeout(function () {
+                    var tmp = document.createElement("input");
+                    copyText.appendChild(tmp);
+                    tmp.focus();
+                    copyText.removeChild(tmp);
+                }, 300);
+            }
+        </script>
+        <meta charset="utf-8" />
+        <!-- Load d3.js -->
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <!-- Load d3-cloud -->
+        <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="header-content">
+                <a href="index.html">
+                    <h1 class="my-name">Florian Chudigiewitsch</h1>
+                </a>
+                <div class="icon-bar">
+                    <a href="https://github.com/fch"
+                        ><i class="fa fa-github"></i
+                    ></a>
+                    <a href="https://www.linkedin.com/in/infoflo/"
+                        ><i class="fa fa-linkedin-square"></i
+                    ></a>
+                    <a href="mailto:hi@florian.website"
+                        ><i class="fa fa-envelope"></i
+                    ></a>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="flex-container-centered">
+                <div class="business-card">
+                    <div>
+                        <img
+                            src="resources/photo.jpeg"
+                            alt="A photo of my face"
+                            height="300"
+                        />
+                    </div>
+                    <div style="height: 20pt"></div>
+                    <div>
+                        <p class="name-business-card">Florian Chudigiewitsch</p>
+                    </div>
+                    <div>
+                        <p class="job">
+                            Doctoral Student in<br />Theoretical Computer
+                            Science
+                        </p>
+                    </div>
+                    <div>
+                        <a
+                            href="https://www.uni-luebeck.de/universitaet/universitaet.html"
+                            target="_blank"
+                            class="affiliation"
+                            >University of L&uuml;beck</a
+                        >
+                    </div>
+                </div>
+
+                <div class="intro">
+                    <h1 style="text-align: left">Hey! &#128075;&#127995;</h1>
+                    <p>
+                        I'm Florian and I am currently a doctoral student in
+                        theoretical computer science at the
+                        <a
+                            href="https://www.tcs.uni-luebeck.de/"
+                            target="_blank"
+                            >Institute of Theoretical Computer Science</a
+                        >
+                        of the
+                        <a
+                            href="https://www.uni-luebeck.de/universitaet/universitaet.html"
+                            target="_blank"
+                            >University of L&uuml;beck</a
+                        >, where I have the fortune of having
+                        <a
+                            href="https://www.tcs.uni-luebeck.de/mitarbeiter/tantau/"
+                            target="_blank"
+                            >Professor Till Tantau</a
+                        >
+                        as an advisor. Before that, I received my BSc and MSc in
+                        computer science from Leibniz University Hannover.
+                    </p>
+
+                    <p>
+                        I'm mainly interested in the interplay of logic and
+                        computation, which can be viewed from a variety of
+                        angles in theoretical computer science: from descriptive
+                        complexity over proof theory to type theory. My main
+                        focus of study at the moment is the expressive power of
+                        various logic fragments in the setting of parameterized
+                        complexity.
+                    </p>
+
+                    <p>
+                        As for theoretical computer science, I am also
+                        interested in quantum computing, theorem proving, type
+                        theory, and programming languages. Besides my research
+                        interests in theoretical computer science, I am
+                        interested in mathematics, physics, and music.
+                    </p>
+
+                    <p>
+                        You can download my
+                        <a
+                            href="resources/Florian_Chudigiewitsch.pdf"
+                            target="_blank"
+                            >CV</a
+                        >
+                        here.
+                    </p>
+
+                    <div class="flex-container">
+                        <div>
+                            <h2>Interests &#128300;</h2>
+                            <ul>
+                                <li>Finite Model Theory</li>
+                                <li>Parameterized Complexity Theory</li>
+                                <li>(Non-classical) Logic</li>
+                            </ul>
+                        </div>
+                        <div style="width: 20pt"></div>
+                        <div>
+                            <h2>Career stops &#127891;</h2>
+                            <div class="career-stop">
+                                <p class="career-title">
+                                    Doctoral Student in Theoretical Computer
+                                    Science
+                                </p>
+                                <div
+                                    style="
+                                        display: flex;
+                                        justify-content: space-between;
+                                    "
+                                >
+                                    <p class="career-affiliation">
+                                        University of L&uuml;beck
+                                    </p>
+                                    <p class="career-date">
+                                        2021 &ndash; present
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="career-stop">
+                                <p class="career-title">
+                                    MSc in Computer Science
+                                </p>
+                                <div
+                                    style="
+                                        display: flex;
+                                        justify-content: space-between;
+                                    "
+                                >
+                                    <p class="career-affiliation">
+                                        University of Hannover
+                                    </p>
+                                    <p class="career-date">2018 &ndash; 2021</p>
+                                </div>
+                            </div>
+                            <div class="career-stop">
+                                <p class="career-title">
+                                    Exchange Semester in Logic and Computation
+                                </p>
+                                <div
+                                    style="
+                                        display: flex;
+                                        justify-content: space-between;
+                                    "
+                                >
+                                    <p class="career-affiliation">TU Vienna</p>
+                                    <p class="career-date">2020/2021</p>
+                                </div>
+                            </div>
+                            <div class="career-stop">
+                                <p class="career-title">
+                                    BSc in Computer Science
+                                </p>
+                                <div
+                                    style="
+                                        display: flex;
+                                        justify-content: space-between;
+                                    "
+                                >
+                                    <p class="career-affiliation">
+                                        University of Hannover
+                                    </p>
+                                    <p class="career-date">2015 &ndash; 2018</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <h2>Publications &#128214;</h2>
+
+            <!-- PACE 2024  -->
+            <div class="publication">
+                <p class="pub-title">
+                    On the Descriptive Complexity of Vertex Deletion Problems
+                </p>
+                <p class="pub-authors">
+                    Max Bannach, Florian Chudigiewitsch, Till Tantau
+                </p>
+                <p class="pub-venue">
+                    International Symposium on Mathematical Foundations of
+                    Computer Science (MFCS), 2024
+                </p>
+                <a
+                    href="https://doi.org/10.4230/LIPIcs.MFCS.2024.17"
+                    class="pub-link"
+                    target="_blank"
+                    >Conference</a
+                ><a
+                    href="https://arxiv.org/abs/2406.18299"
+                    class="pub-link"
+                    target="_blank"
+                    >ArXiv</a
+                >
+                <details class="pub-cite-as">
+                    <summary>Cite</summary>
+                    <pre class="pub-cite-info" id="BannachCT24">
+@inproceedings{BannachCT24,
+    author       = {Max Bannach and
+                    Florian Chudigiewitsch and
+                    Till Tantau},
+    editor       = {Rastislav Kr{\'{a}}lovic and
+                    Anton{\'{\i}}n Kucera},
+    title        = {On the Descriptive Complexity of Vertex Deletion Problems},
+    booktitle    = {49th International Symposium on Mathematical Foundations of Computer
+                    Science, {MFCS} 2024, August 26--30, 2024, Bratislava, Slovakia},
+    series       = {LIPIcs},
+    volume       = {306},
+    pages        = {17:1--17:14},
+    publisher    = {Schloss Dagstuhl -- Leibniz-Zentrum f{\"{u}}r Informatik},
+    year         = {2024},
+    doi          = {10.4230/LIPICS.MFCS.2024.17}
+    }
+</pre
+                    >
+                    <button onclick="copyToClipboard('BannachCT24')">
+                        Copy to clipboard
+                    </button>
+                </details>
+            </div>
+
+            <!-- PACE 2024  -->
+            <div class="publication">
+                <p class="pub-title">
+                    PACE Solver Description: UzL Exact Solver for One-Sided
+                    Crossing Minimization
+                </p>
+                <p class="pub-authors">
+                    Max Bannach, Florian Chudigiewitsch, Kim-Manuel Klein,
+                    Marcel Wienöbst
+                </p>
+                <p class="pub-venue">
+                    International Symposium on Parameterized and Exact
+                    Computation (IPEC), 2024
+                </p>
+                <a
+                    href="https://doi.org/10.4230/LIPIcs.IPEC.2024.28"
+                    class="pub-link"
+                    target="_blank"
+                    >Conference</a
+                >
+                <details class="pub-cite-as">
+                    <summary>Cite</summary>
+                    <pre class="pub-cite-info" id="BannachCKW24">
+@inproceedings{BannachCKW24,
+    author       = {Max Bannach and
+                    Florian Chudigiewitsch and
+                    Kim{-}Manuel Klein and
+                    Marcel Wien{\"{o}}bst},
+    editor       = {{\'{E}}douard Bonnet and
+                    Pawel Rzazewski},
+    title        = {{PACE} Solver Description: UzL Exact Solver for One-Sided Crossing
+                    Minimization},
+    booktitle    = {19th International Symposium on Parameterized and Exact Computation,
+                    {IPEC} 2024, September 4--6, 2024, Royal Holloway, University of London,
+                    Egham, United Kingdom},
+    series       = {LIPIcs},
+    volume       = {321},
+    pages        = {28:1--28:4},
+    publisher    = {Schloss Dagstuhl -- Leibniz-Zentrum f{\"{u}}r Informatik},
+    year         = {2024},
+    doi          = {10.4230/LIPICS.IPEC.2024.28}
+}
+</pre
+                    >
+                    <button onclick="copyToClipboard('BannachCKW24')">
+                        Copy to clipboard
+                    </button>
+                </details>
+            </div>
+
+            <!-- MSCS 2024  -->
+            <div class="publication">
+                <p class="pub-title">
+                    Logical Characterization of Algebraic Circuit Classes over
+                    Integral Domains
+                </p>
+                <p class="pub-authors">
+                    Timon Barlag, Florian Chudigiewitsch, Sabrina Alexandra
+                    Gaube
+                </p>
+                <p class="pub-venue">
+                    Mathematical Structures in Computer Science (MSCS), 2024
+                </p>
+                <a
+                    href="https://www.cambridge.org/core/journals/mathematical-structures-in-computer-science/article/logical-characterizations-of-algebraic-circuit-classes-over-integral-domains/94541B2F327A87136EE80DAAE763B706"
+                    class="pub-link"
+                    target="_blank"
+                    >Journal</a
+                >
+                <a
+                    href="https://arxiv.org/abs/2302.13764"
+                    class="pub-link"
+                    target="_blank"
+                    >ArXiv</a
+                >
+                <details class="pub-cite-as">
+                    <summary>Cite</summary>
+                    <pre class="pub-cite-info" id="BarlagCG2024">
+@article{BarlagCG2024,
+    title={Logical characterizations of algebraic circuit classes over integral domains},
+    DOI={10.1017/S0960129524000136},
+    journal={Mathematical Structures in Computer Science},
+    author={Barlag, Timon and Chudigiewitsch, Florian and Gaube, Sabrina A.},
+    year={2024},
+    pages={1--29}
+}
+</pre
+                    >
+                    <button onclick="copyToClipboard('BarlagCG2024')">
+                        Copy to clipboard
+                    </button>
+                </details>
+            </div>
+
+            <!-- IPEC 2023  -->
+            <div class="publication">
+                <p class="pub-title">
+                    Existential Second-Order Logic over Graphs: Parameterized
+                    Complexity
+                </p>
+                <p class="pub-authors">
+                    Max Bannach, Florian Chudigiewitsch, Till Tantau
+                </p>
+                <p class="pub-venue">
+                    International Symposium on Parameterized and Exact
+                    Computation (IPEC), 2023
+                </p>
+                <a
+                    href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.IPEC.2023.3"
+                    class="pub-link"
+                    target="_blank"
+                    >Conference</a
+                >
+                <a
+                    href="https://arxiv.org/abs/2310.01134"
+                    class="pub-link"
+                    target="_blank"
+                    >ArXiv</a
+                >
+                <details class="pub-cite-as">
+                    <summary>Cite</summary>
+                    <pre class="pub-cite-info" id="BannachCT23">
+@inproceedings{BannachCT23,
+    author       = {Max Bannach and
+                    Florian Chudigiewitsch and
+                    Till Tantau},
+    editor       = {Neeldhara Misra and
+                    Magnus Wahlstr{\"{o}}m},
+    title        = {Existential Second-Order Logic over Graphs: Parameterized Complexity},
+    booktitle    = {18th International Symposium on Parameterized and Exact Computation,
+                    {IPEC} 2023, September 6--8, 2023, Amsterdam, The Netherlands},
+    series       = {LIPIcs},
+    volume       = {285},
+    pages        = {3:1--3:15},
+    publisher    = {Schloss Dagstuhl -- Leibniz-Zentrum f{\"{u}}r Informatik},
+    year         = {2023},
+    doi          = {10.4230/LIPICS.IPEC.2023.3}
+}
+</pre
+                    >
+                    <button onclick="copyToClipboard('BannachCT23')">
+                        Copy to clipboard
+                    </button>
+                </details>
+            </div>
+
+            <!-- Dagstuhl 2023  -->
+            <div class="publication">
+                <p class="pub-title">
+                    Recent Trends in Graph Decomposition (Dagstuhl Seminar
+                    23331)
+                </p>
+                <p class="pub-authors">
+                    George Karypis, Christian Schulz, Darren Strash, Deepak
+                    Ajwani, Rob H. Bisseling, Katrin Casel, &Uuml;mit V.
+                    &Ccedil;ataly&uuml;rek, C&eacute;dric Chevalier, Florian
+                    Chudigiewitsch, Marcelo Fonseca Faraj, Michael R. Fellows,
+                    Lars Gottesb&uuml;ren, Tobias Heuer, Kamer Kaya, Jakub
+                    Lacki, Johannes Langguth, Xiaoye Sherry Li, Ruben Mayer,
+                    Johannes Meintrup, Yosuke Mizutani, Fran&ccedil;ois
+                    Pellegrini, Fabrizio Petrini, Frances A. Rosamond, Ilya
+                    Safro, Sebastian Schlag, Roohani Sharma, Blair D. Sullivan,
+                    Bora U&ccedil;ar, Albert-Jan Yzelman
+                </p>
+                <p class="pub-venue">Dagstuhl Reports 13(8): 1-45 (2023)</p>
+                <a
+                    href="https://drops.dagstuhl.de/entities/document/10.4230/DagRep.13.8.1"
+                    class="pub-link"
+                    target="_blank"
+                    >Report</a
+                >
+                <a
+                    href="https://arxiv.org/abs/2310.11812"
+                    class="pub-link"
+                    target="_blank"
+                    >ArXiv</a
+                >
+                <details class="pub-cite-as">
+                    <summary>Cite</summary>
+                    <pre class="pub-cite-info" id="Karypis0SABCCCC23">
+@article{Karypis0SABCCCC23,
+    author       = {George Karypis and
+                    Christian Schulz and
+                    Darren Strash and
+                    Deepak Ajwani and
+                    Rob H. Bisseling and
+                    Katrin Casel and
+                    {\"{U}}mit V. {\c{C}}ataly{\"{u}}rek and
+                    C{\'{e}}dric Chevalier and
+                    Florian Chudigiewitsch and
+                    Marcelo Fonseca Faraj and
+                    Michael R. Fellows and
+                    Lars Gottesb{\"{u}}ren and
+                    Tobias Heuer and
+                    Kamer Kaya and
+                    Jakub Lacki and
+                    Johannes Langguth and
+                    Xiaoye Sherry Li and
+                    Ruben Mayer and
+                    Johannes Meintrup and
+                    Yosuke Mizutani and
+                    Fran{\c{c}}ois Pellegrini and
+                    Fabrizio Petrini and
+                    Frances A. Rosamond and
+                    Ilya Safro and
+                    Sebastian Schlag and
+                    Roohani Sharma and
+                    Blair D. Sullivan and
+                    Bora U{\c{c}}ar and
+                    Albert{-}Jan Yzelman},
+    title        = {Recent Trends in Graph Decomposition (Dagstuhl Seminar 23331)},
+    journal      = {Dagstuhl Reports},
+    volume       = {13},
+    number       = {8},
+    pages        = {1--45},
+    year         = {2023},
+    doi          = {10.4230/DAGREP.13.8.1}
+}
+</pre
+                    >
+                    <button onclick="copyToClipboard('Karypis0SABCCCC23')">
+                        Copy to clipboard
+                    </button>
+                </details>
+            </div>
+
+            <!-- Master Thesis 2021  -->
+            <div class="publication">
+                <p class="pub-title">
+                    Computational Complexity of Deciding Provability in Linear
+                    Logic and its Fragments
+                </p>
+                <p class="pub-authors">Florian Chudigiewitsch</p>
+                <p class="pub-venue">Master Thesis</p>
+                <a
+                    href="https://arxiv.org/abs/2110.00562"
+                    class="pub-link"
+                    target="_blank"
+                    >ArXiv</a
+                >
+                <details class="pub-cite-as">
+                    <summary>Cite</summary>
+                    <pre class="pub-cite-info" id="Chudigiewitsch2021">
+@article{abs-2110-00562,
+    author       = {Florian Chudigiewitsch},
+    title        = {Computational Complexity of Deciding Provability in Linear Logic and
+                    its Fragments},
+    journal      = {CoRR},
+    volume       = {abs/2110.00562},
+    year         = {2021},
+    url          = {https://arxiv.org/abs/2110.00562},
+    eprinttype   = {arXiv},
+    eprint       = {2110.00562}
+}
+</pre
+                    >
+                    <button onclick="copyToClipboard('Chudigiewitsch2021')">
+                        Copy to clipboard
+                    </button>
+                </details>
+            </div>
+
+            <center>
+                <img src="resources/wc.png" width="800" />
+            </center>
+        </main>
+
+        <footer>
+            <p>
+                You can contact me under
+                <a href="mailto:hi@florian.website">hi@florian.website</a>
+            </p>
+            <p>&#169; 2026 Florian Chudigiewitsch</p>
+            <p>
+                This website is not based on any fancy theme or CMS, just a few
+                lines of HTML5 and CSS3 (and 9 lines of JS).
+            </p>
+        </footer>
+    </body>
+</html>

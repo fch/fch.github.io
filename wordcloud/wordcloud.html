@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Load d3-cloud -->
+<script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz" style="background-color: rgb(40, 40, 50); height: 400px; width: 600px;"></div>
+<script>
+
+var STOPWORDS = ["a", "about", "above", "after", "again", "against", "all", "also", "am", "an", "and", "any", "are", "aren't", "as", "at", "be", "because", "been", "before", "being", "below", "between", "both", "but", "by", "can", "can't", "cannot", "com", "could", "couldn't", "did", "didn't", "do", "does", "doesn't", "doing", "don't", "down", "during", "each", "else", "ever", "few", "for", "from", "further", "get", "had", "hadn't", "has", "hasn't", "have", "haven't", "having", "he", "he'd", "he'll", "he's", "hence", "her", "here", "here's", "hers", "herself", "him", "himself", "his", "how", "how's", "however", "http", "i", "i'd", "i'll", "i'm", "i've", "if", "in", "into", "is", "isn't", "it", "it's", "its", "itself", "just", "k", "let's", "like", "me", "more", "most", "mustn't", "my", "myself", "no", "nor", "not", "of", "off", "on", "once", "only", "or", "other", "otherwise", "ought", "our", "ours", "ourselves", "out", "over", "own", "r", "same", "shall", "shan't", "she", "she'd", "she'll", "she's", "should", "shouldn't", "since", "so", "some", "such", "than", "that", "that's", "the", "their", "theirs", "them", "themselves", "then", "there", "there's", "therefore", "these", "they", "they'd", "they'll", "they're", "they've", "this", "those", "through", "to", "too", "under", "until", "up", "very", "was", "wasn't", "we", "we'd", "we'll", "we're", "we've", "were", "weren't", "what", "what's", "when", "when's", "where", "where's", "which", "while", "who", "who's", "whom", "why", "why's", "with", "won't", "would", "wouldn't", "www", "you", "you'd", "you'll", "you're", "you've", "your", "yours", "yourself", "yourselves"];
+STOPWORDS.push("e.g.");
+STOPWORDS.push("i.e.");
+STOPWORDS.push("paper");
+STOPWORDS.push("new");
+
+ 
+t = `<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/nsrz18rHACsEjfWDyv5riKuoSLk</id>
+  <updated>2026-03-25T00:51:39Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=au:%22Florian+Chudigiewitsch%22&amp;start=0&amp;max_results=200&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>200</opensearch:itemsPerPage>
+  <opensearch:totalResults>7</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2406.18299v1</id>
+    <title>On the Descriptive Complexity of Vertex Deletion Problems</title>
+    <updated>2024-06-26T12:32:09Z</updated>
+    <link href="https://arxiv.org/abs/2406.18299v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2406.18299v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Vertex deletion problems for graphs are studied intensely in classical and parameterized complexity theory. They ask whether we can delete at most k vertices from an input graph such that the resulting graph has a certain property. Regarding k as the parameter, a dichotomy was recently shown based on the number of quantifier alternations of first-order formulas that describe the property. In this paper, we refine this classification by moving from quantifier alternations to individual quantifier patterns and from a dichotomy to a trichotomy, resulting in a complete classification of the complexity of vertex deletion problems based on their quantifier pattern. The more fine-grained approach uncovers new tractable fragments, which we show to not only lie in FPT, but even in parameterized constant-depth circuit complexity classes. On the other hand, we show that vertex deletion becomes intractable already for just one quantifier per alternation, that is, there is a formula of the form {\forall}x{\exists}y{\forall}z(ψ), with ψ quantifier-free, for which the vertex deletion problem is W[1]-hard. The fine-grained analysis also allows us to uncover differences in the complexity landscape when we consider different kinds of graphs and more general structures: While basic graphs (undirected graphs without self-loops), undirected graphs, and directed graphs each have a different frontier of tractability, the frontier for arbitrary logical structures coincides with that of directed graphs.</summary>
+    <category term="cs.LO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-06-26T12:32:09Z</published>
+    <arxiv:primary_category term="cs.LO"/>
+    <author>
+      <name>Max Bannach</name>
+    </author>
+    <author>
+      <name>Florian Chudigiewitsch</name>
+    </author>
+    <author>
+      <name>Till Tantau</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2603.22043v1</id>
+    <title>The Descriptive Complexity of Relation Modification Problems</title>
+    <updated>2026-03-23T14:42:49Z</updated>
+    <link href="https://arxiv.org/abs/2603.22043v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2603.22043v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A relation modification problem gets a logical structure and a natural number k as input and asks whether k modifications of the structure suffice to make it satisfy a predefined property. We provide a complete classification of the classical and parameterized complexity of relation modification problems - the latter w. r. t. the modification budget k - based on the descriptive complexity of the respective target property. We consider different types of logical structures on which modifications are performed: Whereas monadic structures and undirected graphs without self-loops each yield their own complexity landscapes, we find that modifying undirected graphs with self-loops, directed graphs, or arbitrary logical structures is equally hard w. r. t. quantifier patterns.
+  Moreover, we observe that all classes of problems considered in this paper are subject to a strong dichotomy in the sense that they are either very easy to solve (that is, they lie in paraAC^{0uparrow} or TC^0) or intractable (that is, they contain W[2]-hard or NP-hard problems).</summary>
+    <category term="cs.LO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-03-23T14:42:49Z</published>
+    <arxiv:primary_category term="cs.LO"/>
+    <author>
+      <name>Florian Chudigiewitsch</name>
+    </author>
+    <author>
+      <name>Marlene Gründel</name>
+    </author>
+    <author>
+      <name>Christian Komusiewicz</name>
+    </author>
+    <author>
+      <name>Nils Morawietz</name>
+    </author>
+    <author>
+      <name>Till Tantau</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2110.00562v1</id>
+    <title>Computational Complexity of Deciding Provability in Linear Logic and its Fragments</title>
+    <updated>2021-09-28T21:13:19Z</updated>
+    <link href="https://arxiv.org/abs/2110.00562v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2110.00562v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Linear logic was conceived in 1987 by Girard and, in contrast to classical logic, restricts the usage of the structural inference rules of weakening and contraction. With this, atoms of the logic are no longer interpreted as truth, but as information or resources. This interpretation makes linear logic a useful tool for formalisation in mathematics and computer science. Linear logic has, for example, found applications in proof theory, quantum logic, and the theory of programming languages. A central problem of the logic is the question whether a given list of formulas is provable with the calculus. In the research regarding the complexity of this problem, some results were achieved, but other questions are still open. To present these questions and give new perspectives, this thesis consists of three main parts which build on each other: We present the syntax, proof theory, and various approaches to a semantics for linear logic. Here already, we will meet some open research questions. We present the current state of the complexity-theoretic characterization of the most important fragments of linear logic. Here, further research problems are presented and it becomes apparent that until now, the results have all made use of different approaches. We prove an original complexity characterization of a fragment of the logic and present ideas for a new, structural approach to the examination of provability in linear logic.</summary>
+    <category term="cs.LO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2021-09-28T21:13:19Z</published>
+    <arxiv:primary_category term="cs.LO"/>
+    <author>
+      <name>Florian Chudigiewitsch</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2310.01134v1</id>
+    <title>Existential Second-Order Logic Over Graphs: Parameterized Complexity</title>
+    <updated>2023-10-02T12:20:28Z</updated>
+    <link href="https://arxiv.org/abs/2310.01134v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2310.01134v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>By Fagin's Theorem, NP contains precisely those problems that can be described by formulas starting with an existential second-order quantifier, followed by only first-order quantifiers (ESO formulas). Subsequent research refined this result, culminating in powerful theorems that characterize for each possible sequence of first-order quantifiers how difficult the described problem can be. We transfer this line of inquiry to the parameterized setting, where the size of the set quantified by the second-order quantifier is the parameter. Many natural parameterized problems can be described in this way using simple sequences of first-order quantifiers: For the clique or vertex cover problems, two universal first-order quantifiers suffice ("for all pairs of vertices ... must hold"); for the dominating set problem, a universal followed by an existential quantifier suffice ("for all vertices, there is a vertex such that ..."); and so on. We present a complete characterization that states for each possible sequence of first-order quantifiers how high the parameterized complexity of the described problems can be. The uncovered dividing line between quantifier sequences that lead to tractable versus intractable problems is distinct from that known from the classical setting, and it depends on whether the parameter is a lower bound on, an upper bound on, or equal to the size of the quantified set.</summary>
+    <category term="cs.LO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-10-02T12:20:28Z</published>
+    <arxiv:primary_category term="cs.LO"/>
+    <author>
+      <name>Max Bannach</name>
+    </author>
+    <author>
+      <name>Florian Chudigiewitsch</name>
+    </author>
+    <author>
+      <name>Till Tantau</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2603.22063v1</id>
+    <title>On the Complexity of Fundamental Problems for DAG-Compressed Graphs</title>
+    <updated>2026-03-23T14:57:34Z</updated>
+    <link href="https://arxiv.org/abs/2603.22063v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2603.22063v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A DAG compression of a (typically dense) graph is a simple data structure that stores how vertex clusters are connected, where the clusters are described indirectly as sets of reachable sinks in a directed acyclic graph (DAG). They generalize tree compressions, where the clusters form a tree-like hierarchy, and we give the first proof that DAG compressions can achieve better compressions than tree compressions. Our interest in DAG compression stems from the fact that several simple standard algorithms, like breadth-first search on graphs, can be implemented so that they work directly on the compressed rather than on the original graph and so that, crucially, the runtime is relative to the (typically small) size of the compressed graph. We add another entry to the list of algorithms where this is possible, by showing that Kruskal's algorithm for computing minimum spanning trees can be adapted to work directly on DAG compressions. On the negative side, we answer the central open problem from previous work, namely how hard it is to compute a minimum-size DAG compression for a given graph: This is NP-hard; and this is even the case for the dynamic setting, where we must update the DAG compression optimally when a single edge is added or deleted in the input graph.</summary>
+    <category term="cs.DS" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-03-23T14:57:34Z</published>
+    <arxiv:primary_category term="cs.DS"/>
+    <author>
+      <name>Florian Chudigiewitsch</name>
+    </author>
+    <author>
+      <name>Till Tantau</name>
+    </author>
+    <author>
+      <name>Felix Winkler</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2302.13764v1</id>
+    <title>Logical Characterization of Algebraic Circuit Classes over Integral Domains</title>
+    <updated>2023-02-27T13:45:33Z</updated>
+    <link href="https://arxiv.org/abs/2302.13764v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2302.13764v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We present an adapted construction of algebraic circuits over the reals introduced by Cucker and Meer to arbitrary infinite integral domains and generalize the $\mathrm{AC}_{\mathbb{R}}$ and $\mathrm{NC}_{\mathbb{R}}$-classes for this setting. We give a theorem in the style of Immerman's theorem which shows that for these adapted formalisms, sets decided by circuits of constant depth and polynomial size are the same as sets definable by a suitable adaptation of first-order logic. Additionally, we discuss a generalization of the guarded predicative logic by Durand, Haak and Vollmer and we show characterizations for the $\mathrm{AC}_{R}$ and $\mathrm{NC}_{R}$ hierarchy. Those generalizations apply to the Boolean $\mathrm{AC}$ and $\mathrm{NC}$ hierarchies as well. Furthermore, we introduce a formalism to be able to compare some of the aforementioned complexity classes with different underlying integral domains.</summary>
+    <category term="cs.CC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-02-27T13:45:33Z</published>
+    <arxiv:primary_category term="cs.CC"/>
+    <author>
+      <name>Timon Barlag</name>
+    </author>
+    <author>
+      <name>Florian Chudigiewitsch</name>
+    </author>
+    <author>
+      <name>Sabrina Alexandra Gaube</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2310.11812v1</id>
+    <title>Open Problems in (Hyper)Graph Decomposition</title>
+    <updated>2023-10-18T09:06:43Z</updated>
+    <link href="https://arxiv.org/abs/2310.11812v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2310.11812v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large networks are useful in a wide range of applications. Sometimes problem instances are composed of billions of entities. Decomposing and analyzing these structures helps us gain new insights about our surroundings. Even if the final application concerns a different problem (such as traversal, finding paths, trees, and flows), decomposing large graphs is often an important subproblem for complexity reduction or parallelization. This report is a summary of discussions that happened at Dagstuhl seminar 23331 on "Recent Trends in Graph Decomposition" and presents currently open problems and future directions in the area of (hyper)graph decomposition.</summary>
+    <category term="cs.DS" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-10-18T09:06:43Z</published>
+    <arxiv:primary_category term="cs.DS"/>
+    <author>
+      <name>Deepak Ajwani</name>
+    </author>
+    <author>
+      <name>Rob H. Bisseling</name>
+    </author>
+    <author>
+      <name>Katrin Casel</name>
+    </author>
+    <author>
+      <name>Ümit V. Çatalyürek</name>
+    </author>
+    <author>
+      <name>Cédric Chevalier</name>
+    </author>
+    <author>
+      <name>Florian Chudigiewitsch</name>
+    </author>
+    <author>
+      <name>Marcelo Fonseca Faraj</name>
+    </author>
+    <author>
+      <name>Michael Fellows</name>
+    </author>
+    <author>
+      <name>Lars Gottesbüren</name>
+    </author>
+    <author>
+      <name>Tobias Heuer</name>
+    </author>
+    <author>
+      <name>George Karypis</name>
+    </author>
+    <author>
+      <name>Kamer Kaya</name>
+    </author>
+    <author>
+      <name>Jakub Lacki</name>
+    </author>
+    <author>
+      <name>Johannes Langguth</name>
+    </author>
+    <author>
+      <name>Xiaoye Sherry Li</name>
+    </author>
+    <author>
+      <name>Ruben Mayer</name>
+    </author>
+    <author>
+      <name>Johannes Meintrup</name>
+    </author>
+    <author>
+      <name>Yosuke Mizutani</name>
+    </author>
+    <author>
+      <name>François Pellegrini</name>
+    </author>
+    <author>
+      <name>Fabrizio Petrini</name>
+    </author>
+    <author>
+      <name>Frances Rosamond</name>
+    </author>
+    <author>
+      <name>Ilya Safro</name>
+    </author>
+    <author>
+      <name>Sebastian Schlag</name>
+    </author>
+    <author>
+      <name>Christian Schulz</name>
+    </author>
+    <author>
+      <name>Roohani Sharma</name>
+    </author>
+    <author>
+      <name>Darren Strash</name>
+    </author>
+    <author>
+      <name>Blair D. Sullivan</name>
+    </author>
+    <author>
+      <name>Bora Uçar</name>
+    </author>
+    <author>
+      <name>Albert-Jan Yzelman</name>
+    </author>
+  </entry>
+</feed>`
+
+// get abstracts
+lines = t.split('\n');
+summaries = "";
+start = false;
+for (idx = 0; idx < lines.length; idx++) {
+    if (lines[idx].indexOf("<summary>") !== -1) {
+        start = true;
+    }
+    if (start) {
+        cleaned = lines[idx].replace("</summary>", "").replace("<summary>", "");
+        summaries += cleaned + " ";
+    }
+    if (lines[idx].indexOf("</summary>") !== -1) {
+        start = false;
+    }
+}
+
+// Append titles three twice, for double weight
+for (idx = 0; idx < lines.length; idx++) {
+    if (lines[idx].indexOf("<title>") !== -1) {
+        start = true;
+    }
+    if (start) {
+        cleaned = lines[idx].replace("</title>", "").replace("<title>", "");
+        summaries += cleaned + " " + cleaned + " ";
+    }
+    if (lines[idx].indexOf("</title>") !== -1) {
+        start = false;
+    }
+}
+
+// remove common words and math words
+words = summaries.split(/[ ,]+/)
+    .filter(Boolean)
+    .map(w => w.replace(/[\(\)\"\'\.]/g, ''))
+    .filter(w => STOPWORDS.indexOf(w.toLowerCase()) === -1)
+    .filter(w => w.indexOf("$") === -1 && w.indexOf("\\") !== 0 && w.indexOf('&') !== 0)
+    .filter(w => w.length >= 3);
+
+// remove plurals
+for (var idx = 0; idx < words.length; idx++) {
+    if (words[idx].substr(-2) !== 'ss' && words[idx].substr(-1) === 's') {
+        singular = words[idx].slice(0, -1)
+        if (words.indexOf(singular) !== -1) {
+            words[idx] = singular;
+        }
+    }
+}
+// remove multicase
+for (var idx = 0; idx < words.length; idx++) {
+    lowercase = words[idx].toLowerCase();
+    if (words[idx] !== lowercase) {
+        if (words.indexOf(lowercase) !== -1) {
+            words[idx] = lowercase;
+        }
+    }
+}
+
+groupedWords = groupSimilar(words).sort((a, b) => b[1] - a[1]).slice(0, 200);
+console.log(groupedWords);
+groupedWords = groupedWords.filter(([str, num]) => num >= 2);
+
+var myWordsWithWeight = [...groupedWords];
+
+//myWordsWithWeight = ["slice,2", "aperture,12", "word,6", "logic,3", "science,1", "alive,1", "angry,3", "though,4", "tore,1", "fire,5", "happy,2", "points,5", "beta,2", "learned,2", "leave,4"]
+
+var myWords = myWordsWithWeight;
+/*
+var myWords = [];
+
+myWordsWithWeight.forEach(element => {
+    var parts = element.split(',');
+    myWords.push({word: parts[0], size: 10 + 20 * Math.floor(Math.log(parts[1]))});
+});*/
+
+
+var margin = {top: 0, right: 0, bottom: 0, left: 0},
+width = 600 - margin.left - margin.right,
+height = 400 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+var svg = d3.select("#my_dataviz").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+.append("g")
+    .attr("transform",
+        "translate(" + margin.left + "," + margin.top + ")");
+
+// Constructs a new cloud layout instance. It run an algorithm to find the position of words that suits your requirements
+// Wordcloud features that are different from one word to the other must be here
+var layout = d3.layout.cloud()
+.size([width, height])
+.words(myWords.map(function(d) { return {text: d[0], size:d[1]}; }))
+.padding(4)        //space between words
+.rotate(function() { return ~~(Math.random() * 2) * 90; })
+.fontSize(function(d) { return 6 + 15 * Math.floor(Math.log(d.size)); })      // font size of words
+.on("end", draw);
+layout.start();
+
+// This function takes the output of 'layout' above and draw the words
+// Wordcloud features that are THE SAME from one word to the other can be here
+function draw(words) {
+svg
+    .style("background-color", "#282832")
+    .append("g")
+    .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+    .selectAll("text")
+        .data(words)
+    .enter().append("text")
+        .style("font-size", function(d) { return d.size; })
+        .style("fill", function(d) { 
+            var colors = ["#FF3C28", "#0AB9E6", "#E6FF00", "#1EDC00", "#FF3278", "#B400E6", "#FAA005"];
+            return colors[Math.floor(Math.random()*colors.length)]; })
+        .style("stroke", function() {
+            var colors = ["#FF3C28", "#0AB9E6", "#E6FF00", "#1EDC00", "#FF3278", "#B400E6", "#FAA005"];
+            return colors[Math.floor(Math.random()*colors.length)];
+        })
+        .style("stroke-width", function(d) { return 0; })
+        .style("stroke-linejoin", "round")
+        .attr("text-anchor", "middle")
+        .style("font-family", "Crimson Text")
+        .style("font-weight", "bold")
+        .attr("transform", function(d) {
+        return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+        })
+        .text(function(d) { return d.text; });
+}
+
+// 0.01 + 0.15 * Math.floor(Math.log(10 + 20 * Math.floor(Math.log(d.size))))
+
+function groupSimilar(arr) {
+    return arr.reduce((acc, val) => {
+        const { data, map } = acc;
+        const ind = map.get(val);
+        if (map.has(val)) {
+            data[ind][1]++;
+        } else {
+            map.set(val, data.push([val, 1]) - 1);
+        }
+        return { data, map };
+    }, {
+        data: [],
+        map: new Map()
+    }).data;
+};
+</script>

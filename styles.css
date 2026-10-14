@@ -1,0 +1,452 @@
+/*
+.crimson-text-regular {
+  font-family: "Crimson Text", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.crimson-text-semibold {
+  font-family: "Crimson Text", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.crimson-text-bold {
+  font-family: "Crimson Text", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.crimson-text-regular-italic {
+  font-family: "Crimson Text", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.crimson-text-semibold-italic {
+  font-family: "Crimson Text", serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.crimson-text-bold-italic {
+  font-family: "Crimson Text", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+*/
+
+/*
+
+.libertinus-serif-regular {
+  font-family: "Libertinus Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.libertinus-serif-semibold {
+  font-family: "Libertinus Serif", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.libertinus-serif-bold {
+  font-family: "Libertinus Serif", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.libertinus-serif-regular-italic {
+  font-family: "Libertinus Serif", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.libertinus-serif-semibold-italic {
+  font-family: "Libertinus Serif", serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.libertinus-serif-bold-italic {
+  font-family: "Libertinus Serif", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+
+*/
+
+:root {
+    --maincolor: rgb(40, 40, 50);
+    --maincolor-offset: rgb(35, 35, 45);
+    --accentcolor: rgb(190, 220, 250);
+}
+
+@font-face {
+    font-family: MapleMono;
+    src: url("fonts/MapleMono-Regular.otf");
+}
+@font-face {
+    font-family: MapleMono;
+    font-weight: bold;
+    src: url("fonts/MapleMono-Bold.otf");
+}
+@font-face {
+    font-family: MapleMono;
+    font-style: italic;
+    src: url("fonts/MapleMono-Italic.otf");
+}
+
+* {
+    margin: 0;
+}
+
+/* standard stuff */
+body {
+    background-color: var(--maincolor);
+    font-family: "Crimson Text", serif;
+    font-weight: 400;
+    font-style: normal;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: var(--maincolor-offset);
+    padding: 5pt;
+    min-height: 60pt;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+footer {
+    background-color: var(--maincolor-offset);
+    text-align: center;
+    padding: 3pt;
+    font-family: "MapleMono";
+}
+
+footer p {
+    font-size: 8pt;
+}
+
+h1 {
+    color: white;
+    font-size: 40pt;
+}
+
+h2 {
+    color: white;
+    font-size: 28pt;
+    margin-bottom: 10pt;
+}
+
+p {
+    color: white;
+    font-size: 14pt;
+    margin: 5pt;
+}
+
+a {
+    color: var(--accentcolor);
+    text-decoration: none;
+}
+
+ul {
+    color: white;
+    font-size: 14pt;
+}
+
+img {
+    border-radius: 10%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main {
+    width: 80%;
+    max-width: 75em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20pt;
+    margin-top: 90pt;
+    flex: 1;
+}
+
+.my-name {
+    font-family: "Crimson Text", serif;
+    font-weight: 400;
+    font-style: italic;
+    padding: 5pt;
+    float: left;
+}
+
+.header-content {
+    width: 80%;
+    max-width: 75em;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.business-card {
+    margin-right: 20pt;
+    margin-bottom: 15%;
+    justify-content: center;
+    align-items: center;
+    font-family: "MapleMono";
+    flex-basis: 30%;
+}
+
+.intro {
+    flex-basis: 70%;
+}
+
+.name-business-card {
+    font-size: 14pt;
+    text-align: center;
+}
+
+.job {
+    font-size: 12pt;
+    color: #bbb;
+    text-align: center;
+}
+
+.affiliation {
+    font-size: 12pt;
+    text-align: center;
+    display: block;
+}
+
+/* flex stuff */
+.flex-container {
+    display: flex;
+    padding: 5pt;
+}
+
+@media (max-width: 800pt) {
+    .flex-container {
+        flex-direction: column;
+        padding: 5pt;
+    }
+}
+
+.flex-container-centered {
+    display: flex;
+    padding: 5pt;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 800pt) {
+    .flex-container-centered {
+        flex-direction: column;
+        padding: 5pt;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* icon bar */
+.icon-bar {
+    width: 25%; /* Full-width */
+    height: 100%;
+    background-color: var(--maincolor-offset); /* Dark-grey background */
+    overflow: auto; /* Overflow due to float */
+    float: right;
+}
+
+.icon-bar a {
+    float: left; /* Float links side by side */
+    text-align: center; /* Center-align text */
+    width: 33%; /* Equal width (5 icons with 20% width each = 100%) */
+    transition: all 1s ease; /* Add transition for hover effects */
+    color: white; /* White text color */
+    font-size: 36pt; /* Increased font size */
+    min-height: 60pt;
+    line-height: 60pt;
+}
+
+.icon-bar a:hover {
+    background-color: var(--accentcolor); /* Add a hover color */
+}
+
+/* publications */
+.publication {
+    border: 1pt solid var(--accentcolor);
+    border-style: solid;
+    border-width: 0pt 0pt 0pt 3pt;
+    padding-left: 10pt;
+    margin-bottom: 20pt;
+}
+
+.pub-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin: 3pt;
+    margin-left: 5pt;
+}
+
+.pub-authors {
+    font-size: 12pt;
+    color: #bbb;
+    margin: 3pt;
+    margin-left: 5pt;
+}
+
+.pub-venue {
+    font-size: 12pt;
+    color: #bbb;
+    font-style: italic;
+    margin: 3pt;
+    margin-left: 5pt;
+    margin-bottom: 7pt;
+}
+
+.pub-cite-as button {
+    font-family: "MapleMono";
+    font-size: 9pt;
+    border: 1pt solid var(--maincolor);
+    border-radius: 5pt;
+    margin-left: 5pt;
+    padding: 2pt;
+    transition: all 0.1s ease; /* Add transition for hover effects */
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.pub-cite-as button:focus {
+    animation: shake 0.7s;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(-1deg);
+    }
+    20% {
+        transform: rotate(1deg);
+    }
+    30% {
+        transform: rotate(0deg);
+    }
+    40% {
+        transform: rotate(1deg);
+    }
+    50% {
+        transform: rotate(-1deg);
+    }
+    60% {
+        transform: rotate(0deg);
+    }
+    70% {
+        transform: rotate(-1deg);
+    }
+    80% {
+        transform: rotate(1deg);
+    }
+    90% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-1deg);
+    }
+}
+
+.pub-link {
+    font-family: "MapleMono";
+    font-size: 9pt;
+    color: var(--accentcolor);
+    border: 1pt solid var(--accentcolor);
+    border-radius: 5pt;
+    margin-left: 5pt;
+    padding: 2pt;
+    transition: all 1s ease; /* Add transition for hover effects */
+}
+
+.pub-link:hover {
+    color: var(--maincolor);
+    background-color: var(--accentcolor);
+}
+
+.pub-cite-as {
+    font-family: "MapleMono";
+    font-size: 9pt;
+    color: var(--accentcolor);
+    border: 1pt solid var(--accentcolor);
+    border-radius: 5pt;
+    margin: 5pt;
+    padding: 2pt;
+    cursor: pointer;
+    width: fit-content;
+    transition: all 1s ease; /* Add transition for hover effects */
+}
+
+.pub-cite-as[open] {
+    color: var(--maincolor);
+    background-color: var(--accentcolor);
+}
+
+.pub-cite-as:hover {
+    color: var(--maincolor);
+    background-color: var(--accentcolor);
+}
+
+.pub-cite-info {
+    cursor: default;
+    width: 100%;
+}
+
+summary {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+details {
+    font-family: "MapleMono";
+    font-size: 9pt;
+}
+
+details pre {
+    margin-top: 5pt;
+    margin-bottom: 5pt;
+}
+
+/* Career stops */
+.career-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-bottom: 0pt;
+}
+
+.career-affiliation {
+    color: #bbb;
+    font-style: italic;
+    font-size: 12pt;
+}
+
+.career-date {
+    color: #bbb;
+    font-size: 12pt;
+}
+
+.career-stop {
+    margin: 0pt;
+}
